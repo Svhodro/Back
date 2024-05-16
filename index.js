@@ -32,8 +32,8 @@ async function run() {
     // Send a ping to confirm a successful connection
 const serviceCollection = client.db('sporsho').collection('Userdata');
 
-app.get('/insurt',(req,res)=>{
-       let data =serviceCollection.insertOne({
+app.get('/insurt',async(req,res)=>{
+       let data =await serviceCollection.insertOne({
         name:"sporsho",
         dateofbirth:"12/3/2003"
        })
