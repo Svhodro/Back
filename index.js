@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion} = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
@@ -44,10 +44,25 @@ app.get('/Getdata',async(req,res)=>{
   const arraydata = serviceCollection.find();
   const data = await arraydata.toArray();      
   res.send(data);
- 
  //  console.log(data)
 })
+app.put('/update-opportunity', async (req, res) => {
+  try {
+       // Get your MongoDB connection
+      const { id, ...updatedData } = req.body; // Extract the ID and other updated fields
+        // console.log(updatedData)
+      // Update the document with the provided ID
+      await serviceCollection.updateOne(
+          { _id:new ObjectId(id) },
+          { $set: updatedData }
+      );
 
+      res.status(200).send('Data updated successfully');
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Error updating data');
+  }
+});
 
 
 
