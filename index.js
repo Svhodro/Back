@@ -37,6 +37,7 @@ app.get('/insurt',(req,res)=>{
         name:"sporsho",
         dateofbirth:"12/3/2003"
        })
+       res.send(data)
       //  console.log(data)
 })
 
