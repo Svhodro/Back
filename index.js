@@ -40,6 +40,12 @@ app.get('/insurt',async(req,res)=>{
        res.send(data)
       //  console.log(data)
 })
+app.get('/get',(req,res)=>{
+  let data = serviceCollection.find()
+  res.send(data)
+ //  console.log(data)
+})
+
 
 
 
