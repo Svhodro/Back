@@ -4,12 +4,12 @@ const { MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-
+const corsOption ={
+  origin:['http://localhost:5173','http://localhost:4500','https://assignment-11-99457.web.app'],
+  credentials:true,
+  optionsSuccessStatus:200,
+}
+app.use(cors(corsOption));
 // middleware
 
 app.use(express.json());
