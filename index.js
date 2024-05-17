@@ -44,7 +44,7 @@ app.get('/Getdata',async(req,res)=>{
   res.send(data);
  //  console.log(data)
 })
-app.post('/update-opportunity', async (req, res) => {
+app.get('/update-opportunity', async (req, res) => {
   try {
        // Get your MongoDB connection
       const { id, ...updatedData } = req.body; // Extract the ID and other updated fields
